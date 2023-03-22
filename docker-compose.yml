@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+
+  app:
+    image: cockroachapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - dc2-network
+    environment:
+      - NODE_ENV=production
+      - APP_VERSION=1.0
+    depends_on: 
+      - db
+      
+  db:
+     image: cockroachdb/cockroach
+     ports:
+       - "26257:26257"
+       - "8080:8080"
+     command: start-single-node --insecure
+
+     networks:
+       - dc2-network
+
+     volumes:
+       - cockroachdata:/cockroach/cockroach-data
+volumes:
+  cockroachdata:
+   
+
+networks:
+  dc2-network:
+    driver: bridge
