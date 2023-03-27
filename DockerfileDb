@@ -1,5 +1,0 @@
-FROM        cockroachdb/cockroach
-
-#RUN mkdir /docker-entrypoint-initdb.d
-
-COPY ["./createdb.sh", "./docker-entrypoint-initdb.d/createdb.sh"]

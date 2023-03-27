@@ -9,17 +9,11 @@ services:
       dockerfile: Dockerfile
     networks:
       - dc2-network
-    environment:
-      - NODE_ENV=production
-      - APP_VERSION=1.0
     depends_on: 
       - db
       
   db:
-     image: cockroachdatabase
-     build:
-      context: .
-      dockerfile: DockerfileDb
+     image: cockroachdb/cockroach
      ports:
        - "26257:26257"
        - "8080:8080"
