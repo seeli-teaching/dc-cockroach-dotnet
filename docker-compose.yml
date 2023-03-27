@@ -27,6 +27,21 @@ services:
 
      volumes:
        - cockroachdata:/cockroach/cockroach-data
+
+  db-init:
+     image: cockroachdb/cockroach
+
+     command: cockroach sql --insecure -e "CREATE DATABASE IF NOT EXIST tododb;"
+
+     networks:
+       - dc2-network
+
+     volumes:
+       - cockroachdata:/cockroach/cockroach-data
+
+     depends_on: 
+       - db
+
 volumes:
   cockroachdata:
    
