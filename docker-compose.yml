@@ -20,6 +20,9 @@ services:
      ports:
        - "26257:26257"
        - "8080:8080"
+     environment:
+       - COCKROACH_DATABASE=tododb
+
      command: start-single-node --insecure
 
      networks:
@@ -27,20 +30,6 @@ services:
 
      volumes:
        - cockroachdata:/cockroach/cockroach-data
-
-  db-init:
-     image: cockroachdb/cockroach
-
-     command: ./cockroach sql --insecure -e "CREATE DATABASE if not exists tododbls;"
-
-     networks:
-       - dc2-network
-
-     volumes:
-       - cockroachdata:/cockroach/cockroach-data
-
-     depends_on: 
-       - db
 
 volumes:
   cockroachdata:
