@@ -16,12 +16,13 @@ services:
       - db
       
   db:
-     image: cockroachdb/cockroach
+     image: cockroachdatabase
+     build:
+      context: .
+      dockerfile: DockerfileDb
      ports:
        - "26257:26257"
        - "8080:8080"
-     environment:
-       - COCKROACH_DATABASE=tododb
 
      command: start-single-node --insecure
 
