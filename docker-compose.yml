@@ -21,11 +21,6 @@ services:
        - "26257:26257"
        - "8080:8080"
      command: start-single-node --insecure
-     entrypoint:
-      - bash
-      - "-c"
-      - exec cockroach start-single-node --insecure & cockroach sql --insecure -e "CREATE DATABASE IF NOT EXIST tododb;"
-        
 
      networks:
        - dc2-network
