@@ -31,7 +31,7 @@ services:
   db-init:
      image: cockroachdb/cockroach
 
-     command: cockroach sql --insecure -e "CREATE DATABASE if not exists tododbls;"
+     command: ./cockroach sql --insecure -e "CREATE DATABASE if not exists tododbls;"
 
      networks:
        - dc2-network
