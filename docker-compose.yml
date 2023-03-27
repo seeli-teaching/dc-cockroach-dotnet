@@ -24,7 +24,7 @@ services:
      entrypoint:
       - bash
       - "-c"
-      - cockroach sql --insecure -e "CREATE IF NOT EXIST DATABASE tododb;" &
+      - cockroach sql --insecure -e "CREATE DATABASE IF NOT EXIST tododb;" &
         exec cockroach start-single-node --insecure
 
      networks:
