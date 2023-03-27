@@ -20,7 +20,6 @@ services:
      ports:
        - "26257:26257"
        - "8080:8080"
-     run: cockroach sql --execute="create database tododb;" --insecure
      # command: start-single-node --insecure
      entrypoint:
       - bash
