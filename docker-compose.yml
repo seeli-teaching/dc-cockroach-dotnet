@@ -24,8 +24,8 @@ services:
      entrypoint:
       - bash
       - "-c"
-      - cockroach sql --insecure -e "CREATE DATABASE IF NOT EXIST tododb;" &
-        exec cockroach start-single-node --insecure
+      - exec cockroach start-single-node --insecure & cockroach sql --insecure -e "CREATE DATABASE IF NOT EXIST tododb;"
+        
 
      networks:
        - dc2-network
